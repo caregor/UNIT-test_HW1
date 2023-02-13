@@ -53,6 +53,6 @@ public class Calculator {
      * @return возвращает сумму покупки с учетом скидки
      */
     public static double calculatingDiscount(double purchaseAmount, int discountAmount) {
-        return 0;
+        return purchaseAmount - (purchaseAmount * 100 / discountAmount);
     }
 }
