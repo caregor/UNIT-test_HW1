@@ -51,5 +51,24 @@ public class CalculatorTest {
 
         System.out.println(Calculator.calculation(2_147_483_647, 1, '+')); // integer overflow
         System.out.println(Calculator.squareRootExtraction(169));
+
+        // TASK 1. Tests for Calculator.discount method
+        // отрицательное числа, 0, проценты>=100% , процент< 0%, обычные скидки).
+        // positive tests
+        assertThat(Calculator.calculatingDiscount(1, 10)).isEqualTo(0.9);
+        assertThat(Calculator.calculatingDiscount(100, 0)).isEqualTo(100);
+        assertThat(Calculator.calculatingDiscount(100, 1)).isEqualTo(99);
+        assertThat(Calculator.calculatingDiscount(1000, 99)).isEqualTo(10);
+        assertThat(Calculator.calculatingDiscount(100, 100)).isEqualTo(0);
+        //negative tests
+        assertThatThrownBy(() -> Calculator.calculatingDiscount(-1, 10))
+                .isInstanceOf(ArithmeticException.class);
+        assertThatThrownBy(() -> Calculator.calculatingDiscount(0, 10))
+                .isInstanceOf(ArithmeticException.class);
+        assertThatThrownBy(() -> Calculator.calculatingDiscount(1, -1))
+                .isInstanceOf(ArithmeticException.class);
+        assertThatThrownBy(() -> Calculator.calculatingDiscount(101, 101))
+                .isInstanceOf(ArithmeticException.class);
+
     }
 }
