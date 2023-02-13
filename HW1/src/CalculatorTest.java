@@ -58,6 +58,7 @@ public class CalculatorTest {
         assertThat(Calculator.calculatingDiscount(1, 10)).isEqualTo(0.9);
         assertThat(Calculator.calculatingDiscount(100, 0)).isEqualTo(100);
         assertThat(Calculator.calculatingDiscount(100, 1)).isEqualTo(99);
+        assertThat(Calculator.calculatingDiscount(1000, 50)).isEqualTo(500);
         assertThat(Calculator.calculatingDiscount(1000, 99)).isEqualTo(10);
         assertThat(Calculator.calculatingDiscount(100, 100)).isEqualTo(0);
         //negative tests
