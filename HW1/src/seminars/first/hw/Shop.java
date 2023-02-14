@@ -2,6 +2,7 @@ package seminars.first.hw;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Shop {
@@ -19,18 +20,18 @@ public class Shop {
     /**
      * @return отсортированный по возрастанию и цене список продуктов
      */
-    public List<Product> getSortedListProducts(List<Product> products) {
+    public List<Product> getSortedListProducts() {
         List<Product> sortedProducts = new ArrayList<>(products);
-        Collections.sort(sortedProducts, (product1, product2) -> Integer.compare(product1.getCost(), product2.getCost()));
+        Collections.sort(sortedProducts, Comparator.comparingInt(Product::getCost));
         return sortedProducts;
     }
 
     /**
      * @return самый дорогой продукт
      */
-    public Product getMostExpensiveProduct(List<Product> products) {
+    public Product getMostExpensiveProduct() {
         Product lastItem = null;
-        List<Product> sortedProducts = getSortedListProducts(products);
+        List<Product> sortedProducts = getSortedListProducts();
         for (Product item:sortedProducts) {
             lastItem = item;
         }
